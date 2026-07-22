@@ -82,12 +82,18 @@ const CSVPrediction = () => {
                         : ((fraud / data.length) * 100).toFixed(2),
             })
         } catch (err) {
-            console.log(err)
+            console.log("========== ERROR ==========");
+            console.log(err);
+            console.log("Message:", err.message);
+            console.log("Response:", err.response);
+            console.log("Status:", err.response?.status);
+            console.log("Data:", err.response?.data);
 
-            setError(
-                err.response?.data?.error ||
-                "Something went wrong while analyzing."
-            )
+            if (err.response) {
+                setError(JSON.stringify(err.response.data));
+            } else {
+                setError(err.message);
+            }
         } finally {
             setLoading(false);
         }
