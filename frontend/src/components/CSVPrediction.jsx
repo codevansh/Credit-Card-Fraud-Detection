@@ -57,7 +57,7 @@ const CSVPrediction = () => {
             formData.append("file", file)
 
             const response = await axios.post(
-                "https://credit-card-fraud-detection-k281.onrender.com/predict_csv",
+                "https://credit-card-fraud-detection-9i0v.onrender.com/predict_csv",
                 formData
             )
 
